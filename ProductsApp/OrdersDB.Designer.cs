@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\carln\OneDrive\Documents\ISIT420\2NotesAppSQL\ProductsApp\OrdersDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\carln\OneDrive\Documents\Classes\ISIT420\ISIT420HW4\ProductsApp\OrdersDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

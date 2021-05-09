@@ -11,33 +11,25 @@
 
 <body>
     <div>
-        <h2>All Notes</h2>
-        <ul id="notes" />
+        <h2>Which stores are selling CDs for better markups? (Price more than $13)</h2><br />
+        <input type="button" value="GetMarkups" onclick="GetMarkupData()" /><br />
+        <ul id="markups" />
         <br />
-    </div>
-    
-    <div>
-        <h2>Search by Subject</h2>
-        <input type="text" id="SearchId" size="5" />
-        <input type="button" value="Search" onclick="find();" />
-        <p id="note" />
     </div>
 
     <div>
+        <h2>I want to check on the performance of an employee.</h2><br />
+        choose an employee <select name="employees" id="employees"></select><input type="button" value="GetEmp" onclick="GetEmployeePerformance()" /><br />
+        <p id="employeePerformance"></p>
         <br />
-        Priority <input type="text" id="Priority" size="5" /><br />
-        Subject <input type="text" id="Subject" size="5" /><br />
-        Details <input type="text" id="Details" size="5" /><br />
-        <input type="button" value="Add New" onclick="saveNote();" /><br /><br /><br />
-    </div>
-    <div>
-        <label id="saveResponse"></label><br /><br />
-    </div>
-    <div>
-        Subject to Delete <input type="text" id="deleteNote" size="5" /><br />
-        <input type="button" value="Delete Note" onclick="deleteNote();" /><br />
     </div>
 
+    <div>
+        <h2>I want to see the performance of my stores.</h2><br />
+        choose an store <select name="stores" id="stores"></select><input type="button" value="GetStore" onclick="GetStorePerformance()" /><br />
+        <p id="storePerformance"></p>
+        <br />
+    </div>
 
 </body>
 

@@ -2,21 +2,18 @@
 var uri = 'api/Orders';
 
 $(document).ready(function () {
-    $('#saveResponse').text = '';
-    $("#notes").empty();
-    GetShowData();
-   
+    GetSalespeople();
+    GetStores();
 });
 
-function GetShowData() {
+function GetMarkupData() {
     // Send an AJAX request
     $.getJSON(uri + '/BestMarkups')
         .done(function (data) {
-            // On success, 'data' contains a list of products.
-            //$('<li>', { text: "Priority: Subject => Details" }).appendTo($('#notes'));
+
             $.each(data, function (key, item) {
-                // Add a list item for the product.
-                $('<li>', { text: formatItem(item) }).appendTo($('#notes'));
+
+                $('<li>', { text: formatItem(item) }).appendTo($('#markups'));
             });
         });
 }
@@ -25,65 +22,54 @@ function formatItem(item) {
     return 'City : ' + item.City + ', Count: ' + item.Count;
 }
 
-function find() {
-    $('#saveResponse').text = '';
-    $("#notes").empty();
-    var id = $('#SearchId').val();
-    $.getJSON(uri + '/' + id)
+function GetSalespeople() {
+    // Send an AJAX request
+    $.getJSON(uri + '/Salespeople')
         .done(function (data) {
-            $('#note').text(formatItem(data));
-        })
-        .fail(function (jqXHR, textStatus, err) {
-            $('#note').text('Error: ' + err);
+
+            $.each(data, function (key, item) {
+
+                $('<option>', { text: item, value: item }).appendTo($('#employees'));
+            });
         });
 }
 
-function saveNote() {
-    $('#saveResponse').text = '';
-    $("#notes").empty();
-    var note = {
-        subject: $('#Subject').val(),
-        details: $('#Details').val(),
-        priority: $('#Priority').val()
-    };
+function GetStores() {
+    // Send an AJAX request
+    $.getJSON(uri + '/Stores')
+        .done(function (data) {
 
-    $.ajax({
-        url: uri + "/Notes",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(note),
-        success: function (data) {
-            //self.notes.push(data);
-            $("#notes").empty();
-            GetShowData();
-            $('#saveResponse').text("Success: Saved Note");
-            $("#Subject").val('');
-            $("#Details").val('');
-            $("#Priority").val('');
-        },
-        error: function () {
-            $('#saveResponse').text("Error: Save Failed");
-        }
-    });
+            $.each(data, function (key, item) {
+
+                $('<option>', { text: item, value: item }).appendTo($('#stores'));
+            });
+        });
 }
 
+function GetEmployeePerformance() {
+    let select = document.getElementById("employees");
+    let employeeName = select.options[select.selectedIndex].value;
+    console.log(employeeName);
 
-function deleteNote() {
-    $('#saveResponse').text = '';
-    $("#notes").empty();
-    var id = $('#deleteNote').val();
-    $.ajax({
-        url: uri + "/" + id,
-        type: "DELETE",
-        contentType: "application/json",
-        success: function () {
-            $("#notes").empty();
-            GetShowData();
-            $('#saveResponse').text("Success: Note Deleted");
-            $("#deleteNote").val('');
-        },
-        error: function () {
-            $('#saveResponse').text("Error: Delete Failed");
-        }
-    });
-};
+    // Send an AJAX request
+    $.getJSON(uri + '/EmployeePerformance?employeeName=' + employeeName)
+        .done(function (data) {
+            console.log(data);
+
+            document.getElementById("employeePerformance").innerText = "That employee sold $" + data + " for the year";
+        });
+}
+
+function GetStorePerformance() {
+    let select = document.getElementById("stores");
+    let storeName = select.options[select.selectedIndex].value;
+    console.log(storeName);
+
+    // Send an AJAX request
+    $.getJSON(uri + '/StorePerformance?storeCity=' + storeName)
+        .done(function (data) {
+            console.log(data);
+
+            document.getElementById("storePerformance").innerText = "That store sold $" + data + " for the year";
+        });
+}

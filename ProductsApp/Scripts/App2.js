@@ -1,5 +1,5 @@
 ﻿
-var uri = 'api/notes';
+var uri = 'api/Orders';
 
 $(document).on('pagebeforeshow ', '#pageone', function () {   // see: https://stackoverflow.com/questions/14468659/jquery-mobile-document-ready-vs-page-events
 
