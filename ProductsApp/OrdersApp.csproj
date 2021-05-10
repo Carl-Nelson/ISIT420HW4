@@ -135,8 +135,7 @@
       <DependentUpon>OrdersDB.edmx</DependentUpon>
       <LastGenOutput>OrdersDB.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\App2.js" />
-    <Content Include="Scripts\App1.js" />
+    <Content Include="Scripts\App.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="css\themes\jquery.mobile.icons.min" />
